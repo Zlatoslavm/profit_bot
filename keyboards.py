@@ -2,8 +2,8 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeybo
 
 # ====== СПИСОК ДЛЯ ПРОФИТОВ (Краткий) ======
 MODELS = [
-    "iPhone 12", "iPhone 12 +","iPhone 12 P", "iPhone 12 PM",
-    "iPhone 13", "iPhone 13 +", "iPhone 13 P", "iPhone 13 PM",
+    "iPhone 12", "iPhone 12 mini","iPhone 12 P", "iPhone 12 PM",
+    "iPhone 13", "iPhone 13 mini", "iPhone 13 P", "iPhone 13 PM",
     "iPhone 14", "iPhone 14 +", "iPhone 14 P", "iPhone 14 PM",
     "iPhone 15", "iPhone 15 +", "iPhone 15 P", "iPhone 15 PM",
     "iPhone 16", "iPhone 16 e", "iPhone 16 +", "iPhone 16 P", "iPhone 16 PM",
