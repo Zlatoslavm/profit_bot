@@ -56,7 +56,7 @@ async def lock_2(call: types.CallbackQuery, state: FSMContext):
 @dp.message_handler(state=LockForm.worker, is_admin=True)
 async def lock_3(msg: types.Message, state: FSMContext):
     await state.update_data(worker=msg.text)
-    await msg.answer("👤 Введите юзернейм локера:", reply_markup=cancel_kb())
+    await msg.answer("Введите IMEI:", reply_markup=cancel_kb())
     await LockForm.locker.set()
 
 @dp.message_handler(state=LockForm.locker, is_admin=True)
@@ -64,8 +64,9 @@ async def lock_finish(msg: types.Message, state: FSMContext):
     data = await state.get_data()
     text = (
         f"🔐🔑УСПЕХ! 💥 Мамонт в клетке! 🦣Пароль установлен!\n\n"
-        f"Устройство: {data['device']}\n"
-        f"Воркер: {data['worker']}\n"
+        f"📱 Устройство: {data['device']}\n"
+        f"👨‍💻 Воркер: {data['worker']}\n"
+        f"⚙️ IMEI/Serial: {data['locker']}"
     )
     await bot.send_message(CHANNEL_ID_1, text)
     await bot.send_message(CHANNEL_ID_2, text)
